@@ -1,3 +1,4 @@
+import { TbPinnedFilled } from "react-icons/tb";
 import Image from 'next/image';
 import avatar from '@/app/assets/avatar.png';
 import { cn } from '../lib/utils';
@@ -69,7 +70,7 @@ const posts: Scrappy[] = [
 const ScrappyCard = (post: Scrappy) => {
     return (
         <div
-            className={cn('flex flex-col items-center justify-between border border-dashed bg-opacity-30 w-full p-4 rounded-xl shadow-lg cursor-pointer hover:border-black', post.color && `bg-[${post.color}]`)}
+            className={cn('flex flex-col items-center justify-between border border-dashed bg-opacity-30 w-full p-4 shadow-lg cursor-pointer hover:border-black', post.color && `bg-[${post.color}]`)}
         >
             <h2
                 className="text-2xl text-black"
@@ -77,14 +78,14 @@ const ScrappyCard = (post: Scrappy) => {
 
             <div className='flex justify-between w-full items-center'>
                 <div
-                
-                className='flex justify-start items-center gap-2'>
+
+                    className='flex justify-start items-center gap-2'>
                     <Image
                         src={post.author.avatarUrl}
                         alt={"author avatar"}
                         height={50}
                         width={50}
-                        className='rounded-full bg-white bg-opacity-80 shadow-lg border border-dashed border-black hover:scale-110 transition' 
+                        className='rounded-full bg-white bg-opacity-80 shadow-lg border border-dashed border-black hover:scale-110 transition'
                     />
                     <h3
                         className="text-lg text-black"
@@ -103,7 +104,7 @@ const Profile = () => {
     return (
         <div
             className="flex flex-col items-center justify-between bg-white bg-opacity-90 w-1/2 h-dvh"
-        >,
+        >
             <div
                 // style={{
                 //     backgroundImage: `url(${bg.src})`,
@@ -127,22 +128,36 @@ const Profile = () => {
                     >
                         <h1
                             className="text-4xl text-white"
-                        >{user.name}</h1>
+                        >{user.name}
+                        </h1>
                         <h2
                             className="text-2xl text-white"
-                        >{user.bio}</h2>
+                        >{user.bio}
+                        </h2>
                     </div>
 
                 </div>
             </div>
 
-
             <div
-                className='grid grid-cols-3 h-full p-4 gap-4 bg-white'
+                className="flex flex-col items-center justify-start w-full py-4 px-4 gap-2 h-full bg-white"
             >
-                {posts.map((post, index) => (
-                    <ScrappyCard {...post} key={index} />
-                ))}
+                <div
+                    className="flex items-center justify-start w-full "
+                >
+                    <h2
+                        className="text-md self-start text-black "
+                    >Fixed
+                    </h2>
+                    <TbPinnedFilled fill="black" />
+                </div>
+                <div
+                    className='grid grid-cols-3 h-full gap-4'
+                >
+                    {posts.map((post, index) => (
+                        <ScrappyCard {...post} key={index} />
+                    ))}
+                </div>
             </div>
 
         </div>
