@@ -4,7 +4,7 @@ import avatar from '@/app/assets/avatar.png';
 import { cn } from '../lib/utils';
 
 interface UserProfile {
-    id?: number;
+    id: number;
     name: string;
     bio: string;
     avatarUrl: string;
@@ -18,6 +18,7 @@ interface Scrappy {
 }
 
 const user: UserProfile = {
+    id: 1,
     name: "Matheus Alves",
     bio: " a web developer",
     avatarUrl: avatar.src as string
@@ -25,44 +26,45 @@ const user: UserProfile = {
 
 const posts: Scrappy[] = [
     {
-        content: "This is the first scrappy post ever! I'm so excited to be here! I hope you like my content!",
-        date: "30/11/2024",
+        content: "This is the first scrappy post ever! I'm so excited to be here! I hope you like my content! 😊",
+        date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#d1f60a"
     },
     {
-        content: "I think I'm getting the hang of this scrappy thing. I'm starting to like it!",
-        date: "2021-09-02",
+        content: "I think I'm getting the hang of this scrappy thing. I'm starting to like it! 👍",
+        date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
-
         color: "#f6a50a"
     },
     {
-        content: "My favorite games are jrpgs and rpgs. I love the stories and the characters. I'm a big fan of the Dragon Quest series!",
-        date: "2021-09-02",
+        content: "My favorite games are jrpgs and rpgs. I love the stories and the characters. I'm a big fan of the Dragon Quest series! 🎮",
+        date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
-
         color: "#04caf4"
     },
     {
-        content: "This is the scrappy post ever! Whatever is a scrappy anyway?",
-        date: "30/11/2024",
+        content: "This is the scrappy post ever! Whatever is a scrappy anyway? 🤔 https://matheus-alves.com",
+        date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
-
         color: "#d1f60a"
     },
     {
-        content: "Just another scrappy post",
-        date: "2021-09-02",
+        content: "Just another scrappy post. Go to my website 🌐 https://matheus-alves.com",
+        date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
-
         color: "#04caf4"
     },
     {
-        content: "I think I'm getting the hang of this scrappy thing. I'm starting to like it!",
-        date: "2021-09-02",
+        content: "I think I'm getting the hang of this scrappy thing. I'm starting to like it! 😊",
+        date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
-
+        color: "#f6a50a"
+    },
+    {
+        content: "Check out my website! It's a work in progress, but I'm proud of it! 🚀 https://matheus-alves.com",
+        date: "30-11-2024",
+        author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#f6a50a"
     },
 ]
@@ -70,29 +72,31 @@ const posts: Scrappy[] = [
 const ScrappyCard = (post: Scrappy) => {
     return (
         <div
-            className={cn('flex flex-col items-center justify-between border border-dashed bg-opacity-30 w-full p-4 shadow-lg cursor-pointer hover:border-black', post.color && `bg-[${post.color}]`)}
+            className={cn('flex flex-col items-center justify-between w-52 h-52 p-3 shadow-[_2px_2px_10px_0_rgba(0,0,0,0.41)] cursor-pointer hover:scale-105  transition-transform')}
+            style={{ backgroundColor: post.color }}
         >
-            <h2
-                className="text-2xl text-black"
-            >{post.content}</h2>
+            <p
+                className="text-md text-black"
+            >
+                {post.content.split(' ').map((word, index) => (
+                    word.startsWith('http') ? <a key={index} href={word} target="_blank"  rel="noopener noreferrer" className="text-purple-400 bg-lime-400 p-1">{word}</a> : <>{word} </>
+                ))}
+            </p>
 
-            <div className='flex justify-between w-full items-center'>
-                <div
-
-                    className='flex justify-start items-center gap-2'>
-                    <Image
-                        src={post.author.avatarUrl}
-                        alt={"author avatar"}
-                        height={50}
-                        width={50}
-                        className='rounded-full bg-white bg-opacity-80 shadow-lg border border-dashed border-black hover:scale-110 transition'
-                    />
-                    <h3
-                        className="text-lg text-black"
-                    >{post.author.name}</h3>
-                </div>
+            <div
+                className='flex justify-start items-center gap-2'>
+                <Image
+                    src={post.author.avatarUrl}
+                    alt={"author avatar"}
+                    height={40}
+                    width={40}
+                    className='rounded-full bg-white bg-opacity-80 shadow-lg border border-dashed border-black hover:scale-110 transition'
+                />
                 <h3
-                    className="text-lg text-black"
+                    className="text-md text-black"
+                >{post.author.name}</h3>
+                <h3
+                    className="text-[0.65rem] text-black"
                 >{post.date}</h3>
             </div>
         </div>
@@ -111,7 +115,7 @@ const Profile = () => {
                 //     backgroundSize: 'cover',
                 //     backgroundPosition: 'center',
                 // }}
-                className='w-full relative justify-self-start border-b border-black border-dashed p-4'
+                className='w-full relative justify-self-start p-4'
             >
                 <div
                     className='flex w-full items-center px-5 gap-4 '
@@ -140,19 +144,22 @@ const Profile = () => {
             </div>
 
             <div
-                className="flex flex-col items-center justify-start w-full py-4 px-4 gap-2 h-full bg-white"
+                className="flex flex-col items-center justify-start w-full py-4 px-4 gap-2 h-full bg-white  rounded-tr-[110px]"
+                style={{
+                    boxShadow: 'inset -0px 0px 10px 4px rgba(0,0,0,0.11)'
+                }}
             >
                 <div
                     className="flex items-center justify-start w-full "
                 >
                     <h2
-                        className="text-md self-start text-black "
+                        className="text-md self-start text-zinc-500 "
                     >Fixed
                     </h2>
-                    <TbPinnedFilled fill="black" />
+                    <TbPinnedFilled fill="#71717a" />
                 </div>
                 <div
-                    className='grid grid-cols-3 h-full gap-4'
+                    className='grid grid-cols-3 gap-4'
                 >
                     {posts.map((post, index) => (
                         <ScrappyCard {...post} key={index} />
