@@ -20,7 +20,7 @@ interface Scrappy {
 const user: UserProfile = {
     id: 1,
     name: "Matheus Alves",
-    bio: " a web developer",
+    bio: "Sou um desenvolvedor web que gosta de criar coisas legais como este site 😊 me siga em @matheusalvins e matheus-alves.com",
     avatarUrl: avatar.src as string
 }
 
@@ -79,7 +79,7 @@ const ScrappyCard = (post: Scrappy) => {
                 className="text-md text-black"
             >
                 {post.content.split(' ').map((word, index) => (
-                    word.startsWith('http') ? <a key={index} href={word} target="_blank"  rel="noopener noreferrer" className="text-purple-400 bg-lime-400 p-1">{word}</a> : <>{word} </>
+                    word.startsWith('http') ? <a key={index} href={word} target="_blank" rel="noopener noreferrer" className="text-purple-400 bg-lime-400 p-1">{word}</a> : <>{word} </>
                 ))}
             </p>
 
@@ -128,14 +128,14 @@ const Profile = () => {
                         className='rounded-full bg-white bg-opacity-80 shadow-lg border border-dashed border-black'
                     />
                     <div
-                        className='flex flex-col justify-center bg-[#04caf4] bg-opacity-30 w-fit p-4 rounded-lg shadow-md'
+                        className='flex flex-col justify-center border border-dashed border-black bg-white bg-opacity-60 p-4 rounded-lg shadow-md h-full w-full'
                     >
                         <h1
-                            className="text-4xl text-white"
+                            className="text-4xl text-black"
                         >{user.name}
                         </h1>
                         <h2
-                            className="text-2xl text-white"
+                            className="text-lg text-black"
                         >{user.bio}
                         </h2>
                     </div>
@@ -154,7 +154,7 @@ const Profile = () => {
                 >
                     <h2
                         className="text-md self-start text-zinc-500 "
-                    >Fixed
+                    >Fixados
                     </h2>
                     <TbPinnedFilled fill="#71717a" />
                 </div>
