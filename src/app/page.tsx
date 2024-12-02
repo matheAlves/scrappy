@@ -5,7 +5,7 @@ export default function Home() {
     className="flex items-center justify-center min-h-screen "
     >
       <Profile />
-      <div className="flex flex-col items-center justify-center w-4/5 h-dvh bg-white bg-opacity-90"/>
+      <div className="flex flex-col items-center justify-center w-4/5 h-dvh bg-white bg-opacity-70"/>
     </div>
   );
 }

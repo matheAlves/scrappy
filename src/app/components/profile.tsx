@@ -11,6 +11,7 @@ interface UserProfile {
 }
 
 interface Scrappy {
+    id: string;
     content: string;
     date: string;
     author: Pick<UserProfile, 'name' | 'avatarUrl'>;
@@ -26,42 +27,49 @@ const user: UserProfile = {
 
 const posts: Scrappy[] = [
     {
+        id: "1",
         content: "This is the first scrappy post ever! I'm so excited to be here! I hope you like my content! 😊",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#d1f60a"
     },
     {
+        id: "2",
         content: "I think I'm getting the hang of this scrappy thing. I'm starting to like it! 👍",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#f6a50a"
     },
     {
+        id: "3",
         content: "My favorite games are jrpgs and rpgs. I love the stories and the characters. I'm a big fan of the Dragon Quest series! 🎮",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#04caf4"
     },
     {
+        id: "4",
         content: "This is the scrappy post ever! Whatever is a scrappy anyway? 🤔 https://matheus-alves.com",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#d1f60a"
     },
     {
+        id: "5",
         content: "Just another scrappy post. Go to my website 🌐 https://matheus-alves.com",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#04caf4"
     },
     {
+        id: "6",
         content: "I think I'm getting the hang of this scrappy thing. I'm starting to like it! 😊",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
         color: "#f6a50a"
     },
     {
+        id: "7",
         content: "Check out my website! It's a work in progress, but I'm proud of it! 🚀 https://matheus-alves.com",
         date: "30-11-2024",
         author: { name: "Matheus", avatarUrl: avatar.src as string },
@@ -79,7 +87,7 @@ const ScrappyCard = (post: Scrappy) => {
                 className="text-md text-black"
             >
                 {post.content.split(' ').map((word, index) => (
-                    word.startsWith('http') ? <a key={index} href={word} target="_blank" rel="noopener noreferrer" className="text-purple-400 bg-lime-400 p-1">{word}</a> : <>{word} </>
+                    word.startsWith('http') ? <a key={`${word}-${index}`} href={word} target="_blank" rel="noopener noreferrer" className="text-purple-400 bg-lime-400 p-1">{word}</a> : <span key={`${word}-${index}`} >{word} </span>
                 ))}
             </p>
 
@@ -107,7 +115,7 @@ const ScrappyCard = (post: Scrappy) => {
 const Profile = () => {
     return (
         <div
-            className="flex flex-col items-center justify-between bg-white bg-opacity-90 w-1/2 h-dvh"
+            className="flex flex-col items-center justify-between bg-white bg-opacity-70 w-1/2 h-dvh"
         >
             <div
                 // style={{
@@ -144,9 +152,9 @@ const Profile = () => {
             </div>
 
             <div
-                className="flex flex-col items-center justify-start w-full py-4 px-4 gap-2 h-full bg-white  rounded-tr-[110px]"
+                className="flex flex-col items-center justify-start w-full py-4 px-4 gap-2 border h-full bg-white bg-opacity-80 rounded-tr-[110px]"
                 style={{
-                    boxShadow: 'inset -0px 0px 10px 4px rgba(0,0,0,0.11)'
+                    boxShadow: 'inset -2px 2px 15px 6px rgba(0,0,0,0.12)'
                 }}
             >
                 <div
